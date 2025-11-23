@@ -1,62 +1,46 @@
-# ---------------------------
-# Vending Machine Program
-# ---------------------------
 
-# Menu items stored using dictionaries
+
+############################################################################################
+
+print("Welcome to Vending Machine! ")
 menu = {
-    1: {"name": "chips", "price": 1.50},
-    2: {"name": "candy bar", "price": 3.75},
-    3: {"name": "soda", "price": 2.75},
-    4: {"name": "water", "price": 2.00}
+    1: {"name": "cookie", "price": 1.75},
+    2: {"name": "energydrink", "price": 2.00},
+    3: {"name": "candy", "price": 1.00},
+    4: {"name": "water", "price": 2.00},
 }
-
-# Cart to store selected items
 cart = []
-
 # Display menu
-print("Welcome to G's Vending Machine!")
-print("Menu:\n")
-
+print("\n====Menu=====")
 for item_num, details in menu.items():
     print(f"{item_num}. {details['name']} - ${details['price']:.2f}")
-
-print("\n=============================\n")
-
-# User input loop
+print("========================\n")
 while True:
-    choice = input("Enter item number or 'done': ").lower().strip()
-
+    choice=input("Enter item number or done").lower()
     if choice == "done":
-        break 
- 
+        break
     if choice.isdigit():
-        item_num = int(choice)
-
+        item_num=int(choice)
         if item_num in menu:
             cart.append(menu[item_num])
-            print(f"Added {menu[item_num]['name']} - ${menu[item_num]['price']:.2f} to cart")
+            # print(f" added{menu[item_num]['name'] - menu[item_num]['price']}to cart")
+            print(f"added{menu[item_num]['name']} - ${menu[item_num]['price']:.2f} to cart")
         else:
-            print("Invalid item number, please try again.")
+            print("invalid item number. please try again")
     else:
-        print("Invalid input. Please enter a number or 'done'.")
-
-# Print receipt
-print("\n========== RECEIPT ==========")
-
-if not cart:
-    print("No items selected.")
-else:
-    total_sum = 0
-
+        print("invalid item number")
+print("\n====RECEIPT=====")
+total_sum = 0
+if cart:
     for item in cart:
-        item_name = item['name']
-        item_price = item['price']
-        print(f"{item_name:15} ${item_price:.2f}")
-        total_sum += item_price
-
-    print("-----------------------------")
+        print(f"{item['name']:15} ${item['price']:.2f}")
+        total_sum += item['price']
+    print("---------------------")
     print(f"{'TOTAL':15} ${total_sum:.2f}")
+else:
+    print("No item selected")
+print("\n Thank you! ")
 
-print("Thank you for using the vending machine!")
+
 
 
